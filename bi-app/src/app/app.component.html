@@ -1,23 +1,25 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
+ <div class="container">
+  <h2>{{ title }}</h2>
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>KPI Name</th>
+        <th>Chart Result</th>
+        <th>Edit</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let kpi of KPIs">
+        <td>{{kpi.name}}</td>
+        <td>
+          <a class="btn btn-default" role="button" [routerLink]="'/chart-info'"> Show Chart </a>
+        </td>
+        <td>
+          <a class="btn btn-default" role="button" [routerLink]="'/edit-kpi'"> Edit</a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <router-outlet></router-outlet>
 
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-4">
-        <h3>Column 1</h3>
-        <p>Lorem ipsum dolor..</p>
-      </div>
-      <div class="col-sm-4">
-        <h3>Column 2</h3>
-        <p>Lorem ipsum dolor..</p>
-      </div>
-      <div class="col-sm-4">
-        <h3>Column 3</h3>
-        <p>Lorem ipsum dolor..</p>
-      </div>
-    </div>
-  </div>
 </div>
