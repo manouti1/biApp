@@ -37,9 +37,7 @@ namespace BI_Task_SimpleWebApp
             // Camel Case Json Formatter
             services.AddMvc()
              .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
-        
-
-    
+            
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             //Register the DB context 
