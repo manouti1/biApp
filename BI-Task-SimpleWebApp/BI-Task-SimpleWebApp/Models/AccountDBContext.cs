@@ -36,21 +36,17 @@ namespace SimpleWebApp.Models
 
                 entity.Property(e => e.Name).HasMaxLength(200);
 
-               // entity.HasOne(d => d.ParentAccount)
-                    //.WithMany(p => p.InverseParentAccount)
-                    //.HasForeignKey(d => d.ParentAccountId)
-                  //  .HasConstraintName("FK_Account_Account");
             });
 
             modelBuilder.Entity<AccountValue>(entity =>
             {
                 entity.Property(e => e.AccountValueId).ValueGeneratedNever();
 
-                //entity.HasOne(d => d.Account)
-                    //.WithMany(p => p.AccountValue)
-                    //.HasForeignKey(d => d.AccountId)
-                    //.OnDelete(DeleteBehavior.ClientSetNull)
-                    //.HasConstraintName("FK_AccountValue_Account");
+                entity.HasOne(d => d.Account)
+                    .WithMany(p => p.AccountValue)
+                    .HasForeignKey(d => d.AccountId)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_AccountValue_Account");
             });
 
             modelBuilder.Entity<Kpi>(entity =>

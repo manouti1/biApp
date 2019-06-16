@@ -24,7 +24,7 @@ namespace BI_Task_SimpleWebApp.Controllers
         [HttpGet]
         public IEnumerable<Account> GetAccount()
         {
-            return _context.Account;
+            return  _context.Account;
         }
 
         // GET: api/Accounts/5
