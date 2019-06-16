@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import * as Highcharts from "highcharts";
-import { Router } from '@angular/router';
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-chart-info",
@@ -15,7 +15,10 @@ export class ChartInfoComponent implements OnInit {
         data: [1, 2, 3],
         type: "line"
       }
-    ]
+    ],
+    title: {
+      text: "KPI Chart Results"
+    }
   };
   constructor(private router: Router) {}
 
