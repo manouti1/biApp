@@ -10,6 +10,7 @@ const routes: Routes = [
   {path: 'chart-info/:id', component: ChartInfoComponent},
   {path: 'create-kpi', component: CreateKpiComponent},
   {path: '**', component: KpiListingComponent}
+
 ];
 
 @NgModule({
