@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import * as Highcharts from "highcharts";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-chart-info",
@@ -20,9 +20,14 @@ export class ChartInfoComponent implements OnInit {
       text: "KPI Chart Results"
     }
   };
-  constructor(private router: Router) {}
+  public kpiID: number;
 
-  ngOnInit() {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
+
+  ngOnInit() {
+    this.kpiID = Number(this.route.snapshot.paramMap.get("id"));
+    console.log(this.kpiID);
+  }
 
   public goBackToKPI() {
     this.router.navigateByUrl("").then(e => {
