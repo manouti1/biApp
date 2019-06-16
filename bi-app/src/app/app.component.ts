@@ -7,5 +7,4 @@ import { Component } from "@angular/core";
 })
 export class AppComponent {
   title = "KI Financial Indicator";
-  KPIs = [{ name: "KPI1" }, { name: "KPI2" }, { name: "KPI3" }];
 }

@@ -1,0 +1,40 @@
+<div class="float-sm-right mb-1">
+  <button type="button" class="btn btn-primary btn-block">Add New KPI</button>
+</div>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>KPI Name</th>
+      <th>Chart Result</th>
+      <th>Edit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let kpi of KPIs">
+      <td>{{kpi.name}}</td>
+      <td>
+        <a class="btn btn-primary" role="button" [routerLink]="'/chart-info'">
+          Show Chart </a>
+      </td>
+      <td>
+        <a class="btn btn-primary" role="button" [routerLink]="'/edit-kpi'">
+          Edit</a>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div class="row">
+  <div class="col-sm-7">
+    <div class="dropdown">
+      <button class="dropbtn">Page Size</button>
+      <div class="dropdown-content">
+        <a href="#">10</a>
+        <a href="#">25</a>
+        <a href="#">50</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-5 text-right">
+    Number of records: <b>{{KPIs.length}}</b>
+  </div>
+</div>
