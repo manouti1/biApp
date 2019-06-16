@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Newtonsoft.Json.Serialization;
 using SimpleWebApp.Models;
 
 namespace BI_Task_SimpleWebApp
@@ -32,11 +33,18 @@ namespace BI_Task_SimpleWebApp
                 options.CheckConsentNeeded = context => true;
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
+
+            // Camel Case Json Formatter
+            services.AddMvc()
+             .AddJsonOptions(options => options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver());
+        
+
+    
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             //Register the DB context 
-            var connection = "Data Source=.;Initial Catalog=AccountDB;Integrated Security=False;Persist Security Info=False;User ID=sa;Password=123456789";
-            services.AddDbContext<AccountDBContext>(options => options.UseSqlServer(connection));
+            services.AddDbContext<AccountDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AccountDBConnection")));
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
