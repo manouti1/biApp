@@ -30,7 +30,7 @@ export class EditKpiComponent implements OnInit {
 
   updateKPI() {
     // TODO: Use EventEmitter with form value
-    console.log(this.editForm.value);   
+    console.log(this.editForm.value);
   }
 
   closeForm() {

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TreeviewModule } from 'ngx-treeview';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -23,6 +24,7 @@ import { CreateKpiComponent } from './create-kpi/create-kpi.component';
     CreateKpiComponent
   ],
   imports: [
+    TreeviewModule.forRoot(),
     BrowserModule,
     HighchartsChartModule ,
     ReactiveFormsModule,
