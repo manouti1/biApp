@@ -42,7 +42,6 @@ namespace BI_Task_SimpleWebApp
 
             //Register the DB context 
             services.AddDbContext<AccountDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AccountDBConnection")));
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

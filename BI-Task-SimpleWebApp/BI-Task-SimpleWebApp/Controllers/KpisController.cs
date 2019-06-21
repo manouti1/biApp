@@ -14,9 +14,11 @@ namespace BI_Task_SimpleWebApp.Controllers
     public class KpisController : ControllerBase
     {
         private readonly AccountDBContext _context;
+        private readonly IKpiResult _kpiResult;
 
-        public KpisController(AccountDBContext context)
+        public KpisController(AccountDBContext context, IKpiResult kpi)
         {
+            _kpiResult = kpi;
             _context = context;
         }
 
@@ -135,5 +137,14 @@ namespace BI_Task_SimpleWebApp.Controllers
         {
             return _context.Kpi.Any(e => e.Kpiid == id);
         }
+
+        // GET: api/Kpis/5
+        [HttpGet("{id}")]
+        public IActionResult ShowKpiResult(int id)
+        {
+            var x = _kpiResult.GetResult(id);
+            return Ok(x);
+        }
+
     }
 }
