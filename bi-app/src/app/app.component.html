@@ -1,25 +1,8 @@
  <div class="container">
   <h2>{{ title }}</h2>
-  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th>KPI Name</th>
-        <th>Chart Result</th>
-        <th>Edit</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let kpi of KPIs">
-        <td>{{kpi.name}}</td>
-        <td>
-          <a class="btn btn-default" role="button" [routerLink]="'/chart-info'"> Show Chart </a>
-        </td>
-        <td>
-          <a class="btn btn-default" role="button" [routerLink]="'/edit-kpi'"> Edit</a>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+  
+ 
+  
   <router-outlet></router-outlet>
 
 </div>
