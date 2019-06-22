@@ -15,7 +15,10 @@
     <div class="col-sm-6">
       <div class="card">
         <div class="card-heading">Financial Accounts</div>
-        <div class="card-body">Panel Content</div>
+        <div class="card-body">
+            <tree [tree]="tree" (nodeSelected)="logEvent($event)"></tree>
+          
+        </div>
       </div>
     </div>
     <div class="col-sm-6">

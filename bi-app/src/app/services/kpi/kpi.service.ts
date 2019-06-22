@@ -8,6 +8,6 @@ import {HttpService} from '../http.service';
 export class KpiService  extends HttpService<KPI, number> {
 
   constructor(protected _http: HttpClient) {
-    super(_http, 'http://localhost:8080/api/kpi');
+    super(_http, 'https://localhost:44305/api/kpis');
    }
 }

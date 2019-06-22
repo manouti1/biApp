@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { KPI } from "src/classes/KPI";
 import { Router } from "@angular/router";
+import { KpiService } from "../services/kpi/kpi.service";
 
 @Component({
   selector: "app-kpi-listing",
@@ -8,16 +9,16 @@ import { Router } from "@angular/router";
   styleUrls: ["./kpi-listing.component.css"]
 })
 export class KpiListingComponent implements OnInit {
-  public KPIs: KPI[] = [
-    { kpiid: 1, name: "KPI1", formula: "XXXX" },
-    { kpiid: 2, name: "KPI2", formula: "XXXX2" },
-    { kpiid: 3, name: "KPI3", formula: "XXXX3" }
-  ];
+  public KPIs: KPI[] = [];
   public pageSize: number = 10;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private kpiService: KpiService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.kpiService.findAll().subscribe(kpiList => {
+      this.KPIs = kpiList;
+    });
+  }
 
   public goToCreateKPI() {
     this.router.navigateByUrl("create-kpi").then(e => {
