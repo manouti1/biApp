@@ -4,4 +4,5 @@ export class AccountValue extends Account {
   public accountId: number;
   public amount: number;
   public year: number;
+  public account: Account;
 }

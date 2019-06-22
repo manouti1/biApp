@@ -79,7 +79,7 @@ namespace BI_Task_SimpleWebApp.Controllers
                 }
             }
 
-            return NoContent();
+            return Content("Successfully updated KPI");
         }
 
         // POST: api/Kpis

@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router, ActivatedRoute } from "@angular/router";
-import { TreeModel, NodeEvent } from 'ng2-tree';
+import { TreeModel, NodeEvent } from "ng2-tree";
+import { AccountService } from "../services/account/account.service";
 
 @Component({
   selector: "app-create-kpi",
@@ -11,26 +12,34 @@ import { TreeModel, NodeEvent } from 'ng2-tree';
 export class CreateKpiComponent implements OnInit {
   public createForm: FormGroup;
   public tree: TreeModel = {
-    value: 'Programming languages by programming paradigm',
+    value: "Programming languages by programming paradigm",
     children: [
       {
-        value: 'Object-oriented programming',
-        children: [{ value: 'Java' }, { value: 'C++' }, { value: 'C#' }]
+        value: "Object-oriented programming",
+        children: [{ value: "Java" }, { value: "C++" }, { value: "C#" }]
       },
       {
-        value: 'Prototype-based programming',
-        children: [{ value: 'JavaScript' }, { value: 'CoffeeScript' }, { value: 'Lua' }]
+        value: "Prototype-based programming",
+        children: [
+          { value: "JavaScript" },
+          { value: "CoffeeScript" },
+          { value: "Lua" }
+        ]
       }
     ]
   };
   constructor(
     public route: ActivatedRoute,
+    private accountService: AccountService,
     private router: Router,
     private fb: FormBuilder
   ) {}
 
   ngOnInit() {
     this.buildForm();
+    this.accountService.findAll().subscribe(x => {
+      console.log(x);
+    });
   }
 
   buildForm() {

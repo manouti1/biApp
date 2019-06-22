@@ -63,8 +63,7 @@ namespace BI_Task_SimpleWebApp
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseCookiePolicy();
-
-            
+            app.UseCors(options => options.AllowAnyOrigin());
 
             app.UseMvc(routes =>
             {

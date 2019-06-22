@@ -1,6 +1,8 @@
 ﻿using System;
+using System.IO;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.Extensions.Configuration;
 
 namespace SimpleWebApp.Models
 {
@@ -21,10 +23,17 @@ namespace SimpleWebApp.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
+            var builder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json");
+
+            var configuration = builder.Build();
+            var connectionString = configuration.GetConnectionString("AccountDBConnection");
+
+
             if (!optionsBuilder.IsConfigured)
             {
                 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer("Data Source=.;Initial Catalog=AccountDB;Integrated Security=False;Persist Security Info=False;User ID=sa;Password=123456789");
+                optionsBuilder.UseSqlServer(connectionString);
             }
         }
 
