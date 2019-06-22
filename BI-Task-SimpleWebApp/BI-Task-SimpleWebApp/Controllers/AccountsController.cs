@@ -14,9 +14,10 @@ namespace BI_Task_SimpleWebApp.Controllers
     public class AccountsController : ControllerBase
     {
         private readonly AccountDBContext _context;
-
+        
         public AccountsController(AccountDBContext context)
         {
+         
             _context = context;
         }
 
