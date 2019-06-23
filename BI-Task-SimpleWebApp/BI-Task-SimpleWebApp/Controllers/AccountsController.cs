@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SimpleWebApp.Helpers;
 using SimpleWebApp.Models;
 
 namespace BI_Task_SimpleWebApp.Controllers
@@ -80,6 +81,14 @@ namespace BI_Task_SimpleWebApp.Controllers
             }
 
             return NoContent();
+        }
+
+        [HttpGet]
+        [Route("list/{pageNumber}/{pageSize}")]
+        public async Task<PaginatedList<Account>> PagedResult(int pageNumber, int pageSize)
+        {
+            var accounts = _context.Account.AsNoTracking();
+            return await PaginatedList<Account>.CreateAsync(accounts,pageNumber, pageSize);
         }
 
         // POST: api/Accounts
