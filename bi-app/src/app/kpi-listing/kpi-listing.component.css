@@ -37,3 +37,6 @@
   .dropdown:hover .dropbtn {
     background-color: #007bff;
   }
+  .page-link{
+    cursor: pointer;
+  }

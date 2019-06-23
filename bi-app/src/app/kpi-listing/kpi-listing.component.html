@@ -30,13 +30,21 @@
 <div class="row">
   <div class="col-sm-2">
      Items Per Page: 
-      <select id="PerPage" class="form-control" [(ngModel)]="pageSize">
+      <select id="PerPage"  (change)="onChangeEvent($event)" class="form-control" [(ngModel)]="pageSize">
           <option [ngValue]="10">10</option>
           <option [ngValue]="25">25</option>
           <option [ngValue]="50">50</option>
       </select>
   </div>
-  <div class="col-sm-10 text-right">
+  <div class="col-sm-5 row justify-content-center align-items-center">
+    
+    <ul class="pagination">
+      <li class="page-item"><a class="page-link"  (click)="goBack()">Previous</a></li>
+      <li class="page-item" style="padding:7px"><b>Current Page: {{pageIndex}} </b></li>
+      <li class="page-item"><a class="page-link" (click)="goNext()">Next</a></li>
+    </ul>
+  </div>
+  <div class="col-sm-5 text-right">
     Number of records: <b>{{KPIs.length}}</b>
   </div>
 </div>

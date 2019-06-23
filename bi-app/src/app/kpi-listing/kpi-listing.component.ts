@@ -11,16 +11,37 @@ import { KpiService } from "../services/kpi/kpi.service";
 export class KpiListingComponent implements OnInit {
   public KPIs: KPI[] = [];
   public pageSize: number = 10;
+  public pageIndex: number = 1;
 
   constructor(private router: Router, private kpiService: KpiService) {}
 
   ngOnInit() {
-    this.kpiService.findAll().subscribe(kpiList => {
-      this.KPIs = kpiList;
-    });
+    this.getKPIData();
   }
 
-  public goToCreateKPI() {
+  getKPIData() {
+    this.kpiService
+      .findAllPaginated("list", this.pageIndex, this.pageSize)
+      .subscribe(kpiList => {
+        this.KPIs = kpiList;
+      });
+  }
+  goBack() {
+    if (this.pageIndex !== 1) {
+      this.pageIndex--;
+      this.getKPIData();
+    }
+  }
+  goNext() {
+    if (this.pageIndex < this.KPIs.length) {
+      this.pageIndex++;
+      this.getKPIData();
+    }
+  }
+  onChangeEvent(ev) {
+    this.getKPIData();
+  }
+  goToCreateKPI() {
     this.router.navigateByUrl("create-kpi").then(e => {
       if (e) {
         console.log("Navigation is successful!");
