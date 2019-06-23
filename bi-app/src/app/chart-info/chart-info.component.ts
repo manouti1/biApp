@@ -27,13 +27,11 @@ export class ChartInfoComponent implements OnInit {
       .subscribe(chartInfo => {
         const chartSeries = [];
         for (const c in chartInfo) {
-          chartSeries.push({ name: c, data: chartInfo[c] });
+          chartSeries.push({ name: c, data: chartInfo[c],type: 'column' });
         }
 
+        console.log(chartSeries);
         this.chartOptions = {
-          chart: {
-            type: "spline"
-          },
           title: {
             text: "KPI Chart Result"
           },
