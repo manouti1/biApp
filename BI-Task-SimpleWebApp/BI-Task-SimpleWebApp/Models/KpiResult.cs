@@ -9,7 +9,7 @@ namespace SimpleWebApp.Models
 {
     public interface IKpiResult
     {
-        Dictionary<int, double> GetResult(int id);    
+        Dictionary<int, double []> GetResult(int id);    
     }
     public class KpiResult : IKpiResult
     {
@@ -22,7 +22,7 @@ namespace SimpleWebApp.Models
             evaluator = new ExpressionEvaluator();
         }
 
-        public Dictionary<int, double> GetResult(int id)
+        public Dictionary<int, double []> GetResult(int id)
         {
             List<int> years = _context.AccountValue.Select(e => e.Year).Distinct().Cast<int>().ToList();
             Kpi _kpi = _context.Kpi.Where(e => e.Kpiid == id).FirstOrDefault();
@@ -46,7 +46,10 @@ namespace SimpleWebApp.Models
                             evaluator.AddVariable(ac.Name, value.Amount.ToString());
                         }
                     }
-                    chartData.AddValue(years[i],evaluator.EvaluateExpression(_kpi.Formula));
+                    double[] dataArray = new double[1];
+                    dataArray[0] = evaluator.EvaluateExpression(_kpi.Formula);
+                    chartData.AddValue(years[i], dataArray);
+
                 }
             }
             return chartData.GetData();
