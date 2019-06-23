@@ -7,9 +7,7 @@ namespace SimpleWebApp.Helpers
 {
     public class ExpressionEvaluator
     {
-
-        // Stores user-entered primitives like X = 10.
-        private Dictionary<string, string> Primatives;
+        private Dictionary<string, string> Variables;
 
         private enum Precedence
         {
@@ -24,15 +22,20 @@ namespace SimpleWebApp.Helpers
 
         public ExpressionEvaluator()
         {
-            Primatives = new Dictionary<string, string>();
+            Variables = new Dictionary<string, string>();
         }
 
-        public void AddPrimitive(string key, string value)
+        public void ClearVariables()
         {
-            Primatives.Add(key, value);
+            Variables.Clear();
         }
 
-        private double EvaluateExpression(string expression)
+        public void AddVariable(string key, string value)
+        {
+            Variables.Add(key, value);
+        }
+
+        public double EvaluateExpression(string expression)
         {
             int best_pos = 0;
             int parens = 0;
@@ -247,19 +250,19 @@ namespace SimpleWebApp.Helpers
             }
 
             // See if it's a primitive.
-            if (Primatives.ContainsKey(expr))
+            if (Variables.ContainsKey(expr))
             {
                 // Return the corresponding value,
                 // converted into a Double.
                 try
                 {
                     // Try to convert the expression into a value.
-                    return double.Parse(Primatives[expr]);
+                    return double.Parse(Variables[expr]);
                 }
                 catch (Exception)
                 {
-                    throw new FormatException("Primative '" + expr +
-                        "' has value '" + Primatives[expr] + "' which is not a Double.");
+                    throw new FormatException("Variable '" + expr +
+                        "' has value '" + Variables[expr] + "' which is not a Double.");
                 }
             }
 
@@ -296,5 +299,4 @@ namespace SimpleWebApp.Helpers
         }
 
     }
-}
 }

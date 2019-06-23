@@ -15,9 +15,9 @@ namespace BI_Task_SimpleWebApp.Controllers
     {
         private readonly AccountDBContext _context;
         
-        public AccountsController(AccountDBContext context,IKpiResult kpi )
+        public AccountsController(AccountDBContext context)
         {
-            //_ikpResult = kpi;
+         
             _context = context;
         }
 

@@ -40,6 +40,9 @@ namespace BI_Task_SimpleWebApp
             
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            services.AddScoped<IKpiResult, KpiResult>();
+            //services.AddScoped<KpiResult>();
+
             //Register the DB context 
             services.AddDbContext<AccountDBContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AccountDBConnection")));
         }
@@ -61,11 +64,13 @@ namespace BI_Task_SimpleWebApp
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+            
+
             app.UseMvc(routes =>
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                routes
+                    .MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}")
+                    .MapRoute(name: "api", template: "api/{controller}/{action}/{id?}");
             });
         }
     }
