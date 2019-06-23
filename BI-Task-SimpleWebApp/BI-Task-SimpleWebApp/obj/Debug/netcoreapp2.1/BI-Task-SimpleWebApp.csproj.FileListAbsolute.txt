@@ -67,7 +67,6 @@ C:\Users\Y76\Desktop\BI-TASK\BI-Task-SimpleWebApp\BI-Task-SimpleWebApp\bin\Debug
 C:\Users\Y76\Desktop\BI-TASK\BI-Task-SimpleWebApp\BI-Task-SimpleWebApp\bin\Debug\netcoreapp2.1\BI-Task-SimpleWebApp.dll
 C:\Users\Y76\Desktop\BI-TASK\BI-Task-SimpleWebApp\BI-Task-SimpleWebApp\bin\Debug\netcoreapp2.1\BI-Task-SimpleWebApp.pdb
 C:\Users\Y76\Desktop\BI-TASK\BI-Task-SimpleWebApp\BI-Task-SimpleWebApp\bin\Debug\netcoreapp2.1\BI-Task-SimpleWebApp.Views.dll
-C:\Users\Y76\Desktop\BI-TASK\BI-Task-SimpleWebApp\BI-Task-SimpleWebApp\obj\Debug\netcoreapp2.1\BI-Task-SimpleWebApp.csprojAssemblyReference.cache
 C:\Users\Y76\Desktop\BI-TASK\BI-Task-SimpleWebApp\BI-Task-SimpleWebApp\obj\Debug\netcoreapp2.1\BI-Task-SimpleWebApp.csproj.CoreCompileInputs.cache
 C:\Users\Y76\Desktop\BI-TASK\BI-Task-SimpleWebApp\BI-Task-SimpleWebApp\obj\Debug\netcoreapp2.1\BI-Task-SimpleWebApp.RazorAssemblyInfo.cache
 C:\Users\Y76\Desktop\BI-TASK\BI-Task-SimpleWebApp\BI-Task-SimpleWebApp\obj\Debug\netcoreapp2.1\BI-Task-SimpleWebApp.RazorAssemblyInfo.cs

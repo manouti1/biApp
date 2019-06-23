@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using SimpleWebApp.Helpers;
 using SimpleWebApp.Models;
 
 namespace BI_Task_SimpleWebApp.Controllers
@@ -137,6 +138,13 @@ namespace BI_Task_SimpleWebApp.Controllers
             return _context.Kpi.Any(e => e.Kpiid == id);
         }
 
+        [HttpGet]
+        [Route("list/{pageNumber}/{pageSize}")]
+        public async Task<PaginatedList<Kpi>> PagedResult(int pageNumber, int pageSize)
+        {
+            var kpis = _context.Kpi.AsNoTracking();
+            return await PaginatedList<Kpi>.CreateAsync(kpis, pageNumber, pageSize);
+        }
 
         [HttpGet]
         [Route("eval/{id}")]
